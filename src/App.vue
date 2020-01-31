@@ -1,28 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- 排除的是根据组件的name属性 -->
+    <keep-alive exclude="detail">
+      <router-view />
+    </keep-alive>
+    <tab-bar :tabDatas="tabDatas" class="tab" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import TabBar from "components/common/TabBar";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    TabBar
+  },
+  data() {
+    return {
+      tabDatas: [
+        { title: "首页", iconClass: "iconfont icon-shouye", path: "/home" },
+        {
+          title: "购物车",
+          iconClass: "iconfont icon-gouwucheman",
+          path: "/gouwuche"
+        },
+        { title: "商品", iconClass: "iconfont icon-shangpin", path: "/goods" },
+        { title: "我的", iconClass: "iconfont icon-tubiao-", path: "/about" }
+      ]
+    };
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import "assets/css/base.css";
+.tab {
+  z-index: 999;
 }
 </style>
