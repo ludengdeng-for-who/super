@@ -1,11 +1,15 @@
 <template>
   <div>
-    <goods-list-item v-for="item in goodsData" :key="item.page" :itemData="item"/>
+    <goods-list-item
+      v-for="item in goodsData"
+      :key="item.page"
+      :itemData="item"
+    />
   </div>
 </template>
 
 <script>
-import GoodsListItem from './GoodsListItem'
+import GoodsListItem from "./GoodsListItem";
 export default {
   name: "goodsList",
   props: {
@@ -16,9 +20,10 @@ export default {
       }
     }
   },
-  components:{
-      GoodsListItem
-  }
+  components: {
+    GoodsListItem
+  },
+  
 };
 </script>
 

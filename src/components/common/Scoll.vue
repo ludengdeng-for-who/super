@@ -33,29 +33,28 @@ export default {
     });
     //监听滚动的位置
     this.scroll.on("scroll", position => {
-      this.$emit("scroll", position);
+      this.$emit("scroll", position) || this.$emit("scrollPosition", position);
     });
     //监听上拉事件
     this.scroll.on("pullingUp", () => {
       this.$emit("pullintUp");
     });
   },
-  methods:{
-    scrollTo(time=300){
-      this.scroll.scrollTo(0,0,time);
+  methods: {
+    scrollTo(time = 300) {
+      this.scroll.scrollTo(0, 0, time);
     },
-    scrollToAfter(y,time){
-      this.scroll.scrollTo(0,y,time);
+    scrollToAfter(y, time) {
+      this.scroll.scrollTo(0, y, time);
     },
-    finishPullUp(){
+    finishPullUp() {
       this.scroll.finishPullUp();
     },
-    refresh(){
+    refresh() {
       this.scroll.refresh();
     }
   }
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

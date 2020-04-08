@@ -41,6 +41,8 @@ import GoodsList from "components/common/GoodsList";
 import Scroll from "components/common/Scoll";
 import BackTop from "components/content/BackTop";
 
+import { debounce } from "common/debounce";
+
 import TabControl from "./TabControl";
 
 import { getHomeMultidata, getHomeGoods } from "network/home";
@@ -78,7 +80,7 @@ export default {
     this.getHomeGoods("new");
     this.getHomeGoods("sell");
     /****************************************************************/
-    let refresh = this.debounce(this.$refs.scroll.refresh, 50);
+    let refresh = debounce(this.$refs.scroll.refresh, 50);
     this.$bus.$on("imgLoadNo", () => {
       refresh();
     });
@@ -128,18 +130,8 @@ export default {
     },
     backTop() {
       this.isShowHeight = this.$refs.TabControl1.$el.offsetTop;
-    },
-    /******************* 防抖 ****************************************/
-
-    debounce(func, delay) {
-      let timer = null;
-      return function(...agrs) {
-        if (timer) clearTimeout(timer);
-        timer = setTimeout(() => {
-          func.apply(this, agrs);
-        }, delay);
-      };
     }
+    /******************* 防抖 ****************************************/
   },
   activated() {
     this.$refs.scroll.scrollToAfter(this.saveY, 0);

@@ -32,9 +32,13 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import "assets/css/base.css";
 .tab {
-  z-index: 999;
+  position: absolute;
+  z-index: 998;
+  bottom: 0;
+  left: 0;
+  right: 0; 
 }
 </style>

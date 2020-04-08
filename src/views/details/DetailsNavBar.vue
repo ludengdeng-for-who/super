@@ -35,6 +35,7 @@ export default {
   methods: {
     itemClick(index) {
       this.currentIdnex = index;
+      this.$emit('moveTo',index);
     },
     backClick(){
         this.$router.go(-1);
@@ -43,7 +44,7 @@ export default {
 };
 </script>
 
-<style scpoed>
+<style scoped>
 .detailsNavBarInfo {
   padding: 0 10px;
   display: flex;
